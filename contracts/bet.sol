@@ -38,12 +38,6 @@ mapping (address => uint) public numberOfBetsPerAddress;
 
 event BetEnded(bool wasPriceGreaterThan);
 
-/// The bet has already ended.
-error BetsAlreadyEnded();
-
-/// The function auctionEnd has already been called.
-error BetEndAlreadyCalled();
-
 constructor(string _assetName, uint _price, uint bettingTime) payable {
     betContractOwner = payable(msg.sender); // setting the contract creator - this person cannot bet
     prices.push(Price(_assetName, _price, true, 0)); // the first index will be for bets that it will be greater than
